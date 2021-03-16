@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-IMG_NAME=my_servers:v0.0.2
+IMG_NAME=my_servers:v0.0.3
 SERVER_NAME=my_servers
 
 # HTTP
@@ -18,6 +18,10 @@ fi
 if [ -n "$(echo $1 $2 | grep samba)" ]; then
     PORTS_FLAGS=$PORTS_FLAGS" -p 137:137 -p 138:138 -p 139:139 -p 445:445"
 fi
+
+# Metric 
+PORTS_FLAGS=$PORTS_FLAGS" -p 5000:5000"
+
 
 #HTTP/HTTPS
 CONFIG_MOUNT="-v $(pwd)/HTTP:/root/HTTP  -v $(pwd)/HTTPS:/root/HTTPS"

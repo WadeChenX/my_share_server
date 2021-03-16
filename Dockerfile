@@ -15,11 +15,16 @@ EXPOSE 137
 EXPOSE 138
 EXPOSE 139
 EXPOSE 445
+# metric service
+EXPOSE 5000
 ADD entry.sh /root/
 ADD apache.py /root/
 ADD ftp.py /root/
 ADD nfs.py /root/
 ADD samba.py /root/
+ADD metric.py /root/
+ADD metric_app.py /root/
+ADD bottle.py /root/
 WORKDIR /root/
 ENTRYPOINT ["/bin/bash", "/root/entry.sh"]
 #CMD ["/bin/bash"]
