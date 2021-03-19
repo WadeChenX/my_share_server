@@ -19,7 +19,7 @@ if [ -n "$(echo $1 $2 | grep samba)" ]; then
     PORTS_FLAGS=$PORTS_FLAGS" -p 137:137 -p 138:138 -p 139:139 -p 445:445"
 fi
 
-# Metric 
+# event  
 PORTS_FLAGS=$PORTS_FLAGS" -p 5000:5000"
 
 

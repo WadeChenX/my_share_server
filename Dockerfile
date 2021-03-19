@@ -22,8 +22,8 @@ ADD apache.py /root/
 ADD ftp.py /root/
 ADD nfs.py /root/
 ADD samba.py /root/
-ADD metric.py /root/
-ADD metric_app.py /root/
+ADD event.py /root/
+ADD event_app.py /root/
 ADD bottle.py /root/
 WORKDIR /root/
 ENTRYPOINT ["/bin/bash", "/root/entry.sh"]

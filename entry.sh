@@ -8,7 +8,7 @@ support_cmd_map=( \
     ["ftp"]="/root/ftp.py"  \
     ["nfs"]="/root/nfs.py"  \
     ["samba"]="/root/samba.py"  \
-    ["metric"]="/root/metric.py"  \
+    ["event"]="/root/event.py"  \
     ["bash"]=""  \
 )
 cmd_arg_map=( \
@@ -16,7 +16,7 @@ cmd_arg_map=( \
     ["ftp"]="" \
     ["nfs"]="" \
     ["samba"]="" \
-    ["metric"]="" \
+    ["event"]="" \
     ["bash"]="" \
 )
 
@@ -25,7 +25,7 @@ cmd_stop_arg_map=( \
     ["ftp"]="--ftp_stop" \
     ["nfs"]="--nfs_stop" \
     ["samba"]="--samba_stop" \
-    ["metric"]="--metric_stop" \
+    ["event"]="--event_stop" \
     ["bash"]="" \
 )
 

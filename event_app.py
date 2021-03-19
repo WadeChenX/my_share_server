@@ -18,7 +18,8 @@ _allow_origin = '*'
 _allow_methods = 'PUT, GET, POST, DELETE, OPTIONS'
 _allow_headers = 'Authorization, Origin, Accept, Content-Type, X-Requested-With'
 
-dataQ = queue.Queue()
+event_dataQ = queue.Queue()
+metric_dataQ = queue.Queue()
 
 @hook('after_request')
 def setup_response():
@@ -30,26 +31,46 @@ def setup_response():
 
 
 @get('/event')
-def get_root():
+def get_event():
     req_data = None
 
-    response = dataQ.get() if dataQ.empty() is False else {}
+    response = event_dataQ.get() if event_dataQ.empty() is False else {}
 
     return json.dumps(response)
 
 @post('/event')
-def post_root():
+def post_event():
     req_data = None
     context = request.body.read().decode('utf-8')
     print("POST: {}".format(context))
     if context != "" and context != None:
         req_data = json.loads(context)
-        dataQ.put(req_data)
+        event_dataQ.put(req_data)
 
     response = {}
 
     return json.dumps(response)
 
+@get('/metric_event')
+def get_metric_event():
+    req_data = None
+
+    response = metric_dataQ.get() if metric_dataQ.empty() is False else {}
+
+    return json.dumps(response)
+
+@post('/metric_event')
+def post_metric_event():
+    req_data = None
+    context = request.body.read().decode('utf-8')
+    print("POST: {}".format(context))
+    if context != "" and context != None:
+        req_data = json.loads(context)
+        metric_dataQ.put(req_data)
+
+    response = {}
+
+    return json.dumps(response)
 
 
 def process_command():
